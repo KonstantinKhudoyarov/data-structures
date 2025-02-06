@@ -56,4 +56,27 @@ class LinkedList<T> {
         this.size--;
         return tmpData;
     }
+
+    public removeLast(): T | null {
+        if (this.head === null) {
+            return null;
+        }
+
+        if (this.head === this.tail) {
+            return this.removeFirst();
+        }
+
+        let current: LinkedListNode<T> | null = this.head;
+        let previous: LinkedListNode<T> | null = null;
+
+        while(current !== this.tail) {
+            previous = current;
+            current = current!.next;
+        }
+
+        previous!.next = null;
+        this.tail = previous;
+        this.size--;
+        return current!.data;
+    }
 }
