@@ -18,7 +18,7 @@ class LinkedList<T> {
             this.size++;
             return;
         }
-        
+
         node.next = this.head;
         this.head = node;
         this.size++;
@@ -38,5 +38,22 @@ class LinkedList<T> {
             this.tail = node;
             this.size++;
         }
+    }
+
+    public removeFirst(): T | null {
+        if (this.head === null) {
+            return null;
+        }
+
+        const tmpData = this.head.data;
+
+        if (this.head === this.tail) {
+            this.head = this.tail = null;
+        } else {
+            this.head = this.head.next;
+        }
+
+        this.size--;
+        return tmpData;
     }
 }
