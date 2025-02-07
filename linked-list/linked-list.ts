@@ -79,4 +79,20 @@ class LinkedList<T> {
         this.size--;
         return current!.data;
     }
+
+    public peakFirst(): T | null {
+        if(this.head === null) {
+            return null;
+        }
+
+        return this.head.data;
+    }
+
+    public peakLast(): T | null {
+        if(this.tail === null) {
+            return null;
+        }
+
+        return this.tail.data;
+    }
 }
