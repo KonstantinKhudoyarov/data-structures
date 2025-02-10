@@ -104,7 +104,7 @@ class LinkedList<T> {
         let previous: LinkedListNode<T> | null = null;
 
         while(current !== null) {
-            if(this.comparator.equal(value, current.data)) {
+            if(this.comparator.equal(value, current.data) === 0) {
                 if(current === this.head) {
                     return this.removeFirst();
                 }
@@ -123,5 +123,18 @@ class LinkedList<T> {
         }
 
         return null;
+    }
+
+    public contains(value: T): boolean {
+        let current: LinkedListNode<T> | null = this.head; 
+
+        while(current !== null) {
+            if(this.comparator.equal(value, current.data) === 0) {
+                return true;
+            }
+            current = current.next
+        }
+
+        return false;
     }
 }
