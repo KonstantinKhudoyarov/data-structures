@@ -1,13 +1,16 @@
-import {LinkedListNode} from './linked-list-node';
+import { Comparator, CompareFunction } from '../utils';
+import { LinkedListNode } from './linked-list-node';
 
 class LinkedList<T> {
     private head: LinkedListNode<T> | null;
     private tail: LinkedListNode<T> | null;
     private size = 0;
+    private comparator: Comparator<T>;
 
-    constructor() {
+    constructor(compareFn: CompareFunction) {
         this.head = null;
         this.tail = null;
+        this.comparator = new Comparator(compareFn);
     }
 
     public addFirst(data: T): void {
@@ -94,5 +97,31 @@ class LinkedList<T> {
         }
 
         return this.tail.data;
+    }
+
+    public remove(value: T): T | null {
+        let current: LinkedListNode<T> | null = this.head; 
+        let previous: LinkedListNode<T> | null = null;
+
+        while(current !== null) {
+            if(this.comparator.equal(value, current.data)) {
+                if(current === this.head) {
+                    return this.removeFirst();
+                }
+
+                if(current === this.tail) {
+                    return this.removeLast();
+                }
+
+                previous!.next = current.next;
+                this.size--;
+                return current.data;
+            }
+
+            previous = current;
+            current = current.next;
+        }
+
+        return null;
     }
 }
