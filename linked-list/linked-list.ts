@@ -2,14 +2,12 @@ import { Comparator, CompareFunction } from '../utils';
 import { LinkedListNode } from './linked-list-node';
 
 class LinkedList<T> {
-    private head: LinkedListNode<T> | null;
-    private tail: LinkedListNode<T> | null;
+    private head: LinkedListNode<T> | null = null;
+    private tail: LinkedListNode<T> | null = null;
     private size = 0;
     private comparator: Comparator<T>;
 
     constructor(compareFn: CompareFunction) {
-        this.head = null;
-        this.tail = null;
         this.comparator = new Comparator(compareFn);
     }
 
