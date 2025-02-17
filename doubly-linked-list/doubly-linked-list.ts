@@ -40,4 +40,22 @@ export class DoublyLinkedList<T> {
         this.tail = node;
         this.size++;
     }
+
+    public removeFirst(): T | null {
+        if(this.head === null) {
+            return null;
+        }
+
+        const tmpData = this.head.data;
+
+        if(this.head === this.tail) {
+            this.head = this.tail = null;
+        } else {
+            this.head = this.head.next;
+            this.head.previous = null;
+        }
+
+        this.size--;
+        return tmpData;
+    }
 }
