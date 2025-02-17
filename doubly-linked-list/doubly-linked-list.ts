@@ -58,4 +58,21 @@ export class DoublyLinkedList<T> {
         this.size--;
         return tmpData;
     }
+
+    public removeLast(): T | null {
+        if(this.head === null) {
+            return null;
+        }
+
+        if (this.head === this.tail) {
+            return this.removeFirst()
+        }
+
+        const tmpData = this.tail.data;
+
+        this.tail = this.tail.previous;
+        this.tail.next = null;
+        this.size--;
+        return tmpData;
+    }
 }
