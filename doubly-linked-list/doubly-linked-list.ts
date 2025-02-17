@@ -10,4 +10,19 @@ export class DoublyLinkedList<T> {
     constructor(compareFn: CompareFunction) {
         this.comparator = new Comparator(compareFn);
     }
+
+    public addFirst(data: T): void {
+        const node = new DoublyLinkedListNode(data);
+
+        if(this.head === null) {
+            this.head = this.tail = node;
+            this.size++;
+            return;
+        }
+
+        node.next = this.head;
+        this.head.previous = node;
+        this.head = node;
+        this.size++;
+    }
 }
