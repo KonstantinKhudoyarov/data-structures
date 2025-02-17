@@ -25,4 +25,19 @@ export class DoublyLinkedList<T> {
         this.head = node;
         this.size++;
     }
+
+    public addLast(data: T): void {
+        const node = new DoublyLinkedListNode(data);
+
+        if(this.head === null) {
+            this.head = this.tail = node;
+            this.size++;
+            return;
+        }
+
+        this.tail.next = node;
+        node.previous = this.tail;
+        this.tail = node;
+        this.size++;
+    }
 }
