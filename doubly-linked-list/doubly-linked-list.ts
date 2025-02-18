@@ -91,4 +91,18 @@ export class DoublyLinkedList<T> {
 
         return this.tail.data;
     }
+
+    public contains(value: T): boolean {
+        let current: DoublyLinkedListNode<T> | null = this.head;
+
+        while(current !== null) {
+            if(this.comparator.equal(value, current.data) === 0) {
+                return true;
+            }
+
+            current = current.next;
+        }
+
+        return false;
+    }
 }
