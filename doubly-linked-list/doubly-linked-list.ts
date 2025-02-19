@@ -92,6 +92,31 @@ export class DoublyLinkedList<T> {
         return this.tail.data;
     }
 
+    public remove(value: T): T | null {
+        let current: DoublyLinkedListNode<T> | null = this.head;
+
+        while(current !== null) {
+            if(this.comparator.equal(value, current.data) === 0) {
+                if(current === this.head) {
+                    return this.removeFirst();
+                }
+
+                if(current === this.tail) {
+                    return this.removeLast();
+                }
+
+                current.previous.next = current.next;
+                current.next.previous = current.previous;
+                this.size--;
+                return current.data;
+            }
+
+            current = current.next;
+        }
+
+        return null;
+    }
+
     public contains(value: T): boolean {
         let current: DoublyLinkedListNode<T> | null = this.head;
 

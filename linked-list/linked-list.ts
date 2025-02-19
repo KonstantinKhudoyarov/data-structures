@@ -130,6 +130,7 @@ class LinkedList<T> {
             if(this.comparator.equal(value, current.data) === 0) {
                 return true;
             }
+
             current = current.next
         }
 
