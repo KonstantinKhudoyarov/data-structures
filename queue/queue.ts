@@ -21,4 +21,19 @@ export class Queue<T> {
         this.right.next = newNode;
         this.right = newNode;
     }
+
+    public dequeue(): T | null {
+        if(this.left === null) {
+            return null;
+        }
+
+        const data = this.left.data;
+        this.left = this.left.next;
+
+        if(this.left === null) {
+            this.right = null;
+        }
+
+        return data;
+    }
 }
