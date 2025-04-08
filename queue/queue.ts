@@ -9,6 +9,10 @@ export class Queue<T> {
         this.right = null;
     }
 
+    public isEmpty(): boolean {
+        return this.left === null;
+    }
+
     public enqueue(data: T): void {
         const newNode = new LinkedListNode(data);
 
