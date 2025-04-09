@@ -10,4 +10,16 @@ export class Stack<T> {
     public isEmpty() {
         return this.current === null;
     }
+
+    public push(data: T): void {
+        const newNode = new LinkedListNode(data);
+
+        if(this.current === null) {
+            this.current = newNode;
+            return;
+        }
+
+        newNode.next = this.current;
+        this.current = newNode;
+    }
 }
