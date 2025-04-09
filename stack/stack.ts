@@ -35,4 +35,8 @@ export class Stack<T> {
 
         return data;
     }
+
+    public peak(): T | null {
+        return this.current && this.current.data;
+    }
 }
