@@ -22,4 +22,17 @@ export class Stack<T> {
         newNode.next = this.current;
         this.current = newNode;
     }
+
+    public pop(): T | null {
+        if(this.current === null) {
+            return null;
+        }
+
+        const data = this.current.data;
+        const previous = this.current;
+        this.current = this.current.next;
+        previous.next = null;
+
+        return data;
+    }
 }
